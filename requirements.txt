@@ -5,8 +5,8 @@ djangorestframework-simplejwt
 
 django-cors-headers
 
-dj-rest-auth>=2.2.0
-django-allauth>=0.54.0
+dj-rest-auth==2.2.0
+django-allauth==0.54.0
 
 Pillow
 
