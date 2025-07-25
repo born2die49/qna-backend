@@ -50,6 +50,39 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # This is the key. It tells DRF to look for "Bearer <token>" in the
+        # Authorization header of incoming requests.
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        # This is a good default to have. It ensures that endpoints
+        # are protected by default unless you specify otherwise in the view.
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
+
+# REST_AUTH = {
+#     'USER_DETAILS_SERIALIZER': 'user.serializers.UserProfileSerializer',
+# }
+
+# Also, ensure CORS is configured to allow your Next.js app to talk to Django
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+# You might also need to allow the Authorization header through CORS
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'authorization',
+    'content-type',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
